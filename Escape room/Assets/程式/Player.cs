@@ -9,12 +9,21 @@ public class Player : MonoBehaviour
     public Animator ani;
     public AudioSource aud;
     public Rigidbody2D rig;
-    public bool indoor;
+    public bool indoor1to1;
+    public bool indoor1to2;
+    public bool indoor1to3;
+    public bool indoor2to1;
+    public bool indoor2to2;
+    public bool indoor2to3;
+    public bool indoor2to4;
+    public bool indoor3to1;
+    public bool indoor3to2;
+    public bool indoor3to3;
     public bool floorup1;
     public bool floorup2;
     public bool floordown2;
     public bool floordown3;
-
+    public static Vector2 pos;
  
     public void Awake()
     {
@@ -22,7 +31,14 @@ public class Player : MonoBehaviour
         ani = GetComponent<Animator>();
         aud = GetComponent<AudioSource>();
     }
-
+    public void Start()
+    {
+        if (GameManager.TP == true)
+        {
+            transform.Translate(pos.x, pos.y, 0, Space.World);
+            GameManager.TP = false;
+        }
+    }
     public void Update()
     {
         Move();
@@ -52,6 +68,11 @@ public class Player : MonoBehaviour
         }
 
     }
+
+    /// <summary>
+    /// 死亡
+    /// </summary>
+    /// <param name="obj"></param>
     public void Dead(string obj)
     {
         if (obj == "敵人")
@@ -65,6 +86,7 @@ public class Player : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
     /// <summary>
     /// ODE碰撞時執行一次的事件
     /// </summary>
@@ -73,42 +95,141 @@ public class Player : MonoBehaviour
     {
         Dead(collision.gameObject.tag);
     }
-   
+
+    /// <summary>
+    /// 判斷是否在房間或樓層的進入範圍
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "房間") indoor = true;
+        if (collision.name == "1F門1") indoor1to1 = true;
+        if (collision.name == "1F門2") indoor1to2 = true;
+        if (collision.name == "1F門3") indoor1to3 = true;
+        if (collision.name == "2F門1") indoor2to1 = true;
+        if (collision.name == "2F門2") indoor2to2 = true;
+        if (collision.name == "2F門3") indoor2to3 = true;
+        if (collision.name == "2F門4") indoor2to4 = true;
+        if (collision.name == "3F門1") indoor3to1 = true;
+        if (collision.name == "3F門2") indoor3to2 = true;
+        if (collision.name == "3F門3") indoor3to3 = true;
         if (collision.tag == "1F上樓區域") floorup1 = true;
         if (collision.tag == "2F上樓區域") floorup2 = true;
         if (collision.tag == "2F下樓區域") floordown2 = true;
         if (collision.tag == "3F下樓區域") floordown3 = true;
     }
+
+    /// <summary>
+    /// 判斷是否離開房間或樓層的進入範圍
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "房間") indoor = false;
+        if (collision.name == "1F門1") indoor1to1 = false;
+        if (collision.name == "1F門2") indoor1to2 = false;
+        if (collision.name == "1F門3") indoor1to3 = false;
+        if (collision.name == "2F門1") indoor2to1 = false;
+        if (collision.name == "2F門2") indoor2to2 = false;
+        if (collision.name == "2F門3") indoor2to3 = false;
+        if (collision.name == "2F門4") indoor2to4 = false;
+        if (collision.name == "3F門1") indoor3to1 = false;
+        if (collision.name == "3F門2") indoor3to2 = false;
+        if (collision.name == "3F門3") indoor3to3 = false;
         if (collision.tag == "1F上樓區域") floorup1 = false;
         if (collision.tag == "2F上樓區域") floorup2 = false;
         if (collision.tag == "2F下樓區域") floordown2 = false;
         if (collision.tag == "3F下樓區域") floordown3 = false;
     }
+
+    /// <summary>
+    /// 進入房間和樓層
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator INSIDE()
     {
-        //門
-        if (indoor && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+       //進入房間
+        if (indoor1to1 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
         {
-            int lvindex = SceneManager.GetActiveScene().buildIndex;  //取得當前的場景編號
-            lvindex++;                                               //編號加一
-            SceneManager.LoadScene(lvindex);                         //載入下一個
+            pos = transform.position;
+            StartCoroutine(GameManager.instance.Endloadingimage());
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("房間1F-1");
         }
-        //1F上2F
+        else if (indoor1to2 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        {
+            pos = transform.position;
+            StartCoroutine(GameManager.instance.Endloadingimage());
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("房間1F-2");
+        }
+        else if (indoor1to3 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        {
+            pos = transform.position;
+            StartCoroutine(GameManager.instance.Endloadingimage());
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("房間1F-3");
+        }
+        else if (indoor2to1 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        {
+            pos = transform.position;
+            StartCoroutine(GameManager.instance.Endloadingimage());
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("房間2F-1");
+        }
+        else if (indoor2to2 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        {
+            pos = transform.position;
+            StartCoroutine(GameManager.instance.Endloadingimage());
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("房間2F-2");
+        }
+        else if (indoor2to3 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        {
+            pos = transform.position;
+            StartCoroutine(GameManager.instance.Endloadingimage());
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("房間2F-3");
+        }
+        else if (indoor2to4 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        {
+            pos = transform.position;
+            StartCoroutine(GameManager.instance.Endloadingimage());
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("房間2F-4");
+        }
+        else if (indoor3to1 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        {
+            pos = transform.position;
+            StartCoroutine(GameManager.instance.Endloadingimage());
+            print("樓層" + pos);
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("房間3F-1");
+        }
+        else if (indoor3to2 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        {
+            pos = transform.position;
+            StartCoroutine(GameManager.instance.Endloadingimage());
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("房間3F-2");
+        }
+        else if (indoor3to3 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        {
+            pos = transform.position;
+            StartCoroutine(GameManager.instance.Endloadingimage());
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("房間3F-3");
+        }
+       //1F上2F
         if (floorup1 && Input.GetKeyDown(KeyCode.W))
         {
+            FloorManager.floor = FloorManager.floor + 1;
             StartCoroutine(GameManager.instance.Endloadingimage());
             yield return new WaitForSeconds(1f);
             SceneManager.LoadScene("2F");
         }
-        //2F上3F
+       //2F上3F
         if (floorup2 && Input.GetKeyDown(KeyCode.W))
         {
+            FloorManager.floor = FloorManager.floor + 1;
             StartCoroutine(GameManager.instance.Endloadingimage());
             yield return new WaitForSeconds(1f);
             SceneManager.LoadScene("3F");
@@ -116,13 +237,15 @@ public class Player : MonoBehaviour
         //2F下1F
         if (floordown2 && Input.GetKeyDown(KeyCode.W))
         {
+            FloorManager.floor = FloorManager.floor - 1;
             StartCoroutine(GameManager.instance.Endloadingimage());
             yield return new WaitForSeconds(1f);
             SceneManager.LoadScene("1F");
         }
-        //3F下2F
+       //3F下2F
         if (floordown3 && Input.GetKeyDown(KeyCode.W))
         {
+            FloorManager.floor = FloorManager.floor - 1;
             StartCoroutine(GameManager.instance.Endloadingimage());
             yield return new WaitForSeconds(1f);
             SceneManager.LoadScene("2F");

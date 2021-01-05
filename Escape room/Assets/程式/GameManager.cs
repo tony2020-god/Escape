@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;//引用系統集合、管理API(協同程式:非同步處理)
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
     [Header("遊戲載入畫面")]
     public GameObject gameView;
     public static GameManager instance; //對戰管理實體物件
+    public static bool TP = false;
+    
 
 
     public void Awake()
@@ -46,5 +49,17 @@ public class GameManager : MonoBehaviour
             loading.fillAmount = imageCD / 0.9f;                            //更新載入吧條
             yield return new WaitForSeconds(0.01f);
         }
+
+    }
+    public IEnumerator ExitRoom()
+    {
+        StartCoroutine(Endloadingimage());
+        yield return new WaitForSeconds(1f);
+        TP = true;
+        SceneManager.LoadScene(FloorManager.floor + "F");
+    }
+    public void ExitButtom()
+    {
+        StartCoroutine(ExitRoom());
     }
 }
