@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator Startloadingimage()
     {
+        yield return new WaitForSeconds(0.5f);
         while (imageCD > 0)        //迴圈 while(布林值) "當布林值為 true 時執行敘述"
         {
 
@@ -43,12 +44,6 @@ public class GameManager : MonoBehaviour
 
             imageCD = imageCD + 0.01f;
             loading.fillAmount = imageCD / 0.9f;                            //更新載入吧條
-                                                                            //等待
-            if (imageCD >= 0.9f)    //判斷式 if(布林值) "當布林值為true時執行一次"  
-            {
-                gameView.SetActive(false); //關閉遊戲載入畫面
-
-            }
             yield return new WaitForSeconds(0.01f);
         }
     }

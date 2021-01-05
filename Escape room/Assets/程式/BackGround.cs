@@ -18,6 +18,5 @@ public class BackGround : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         GetComponentInChildren<SpriteRenderer>().color = Color.Lerp(gray, white, 20f * Time.deltaTime);
         yield return new WaitForSeconds(1.5f);
-        
     }
 }
