@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
+using System.Collections;//引用系統集合、管理API(協同程式:非同步處理)
 public class Player : MonoBehaviour
 {
     [Header("移動速度"), Range(0, 1000)]
@@ -13,17 +14,19 @@ public class Player : MonoBehaviour
     public bool floorup2;
     public bool floordown2;
     public bool floordown3;
-    public CapsuleCollider2D bkcap;
+
+ 
     public void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
         aud = GetComponent<AudioSource>();
     }
+
     public void Update()
     {
         Move();
-        NextLV();
+        StartCoroutine(INSIDE());
     }
     /// <summary>
     /// 移動
@@ -87,7 +90,7 @@ public class Player : MonoBehaviour
         if (collision.tag == "2F下樓區域") floordown2 = false;
         if (collision.tag == "3F下樓區域") floordown3 = false;
     }
-    private void NextLV()
+    private IEnumerator INSIDE()
     {
         //門
         if (indoor && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
@@ -99,28 +102,30 @@ public class Player : MonoBehaviour
         //1F上2F
         if (floorup1 && Input.GetKeyDown(KeyCode.W))
         {
-            bkcap.offset = new Vector2(-0.94f, -1.1f);
-            transform.Translate(-4.47f, 9.46f, 0, Space.World);
+            StartCoroutine(GameManager.instance.Endloadingimage());
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("2F");
         }
         //2F上3F
         if (floorup2 && Input.GetKeyDown(KeyCode.W))
         {
-            bkcap.offset = new Vector2(-0.94f, 0.06f);
-            transform.Translate(-4.47f, 19.5f, 0, Space.World);
+            StartCoroutine(GameManager.instance.Endloadingimage());
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("3F");
         }
         //2F下1F
         if (floordown2 && Input.GetKeyDown(KeyCode.W))
         {
-          
-            transform.Translate(-4.47f, -0.28f, 0, Space.World);
-            bkcap.offset = new Vector2(-0.94f, -2.13f);
+            StartCoroutine(GameManager.instance.Endloadingimage());
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("1F");
         }
         //3F下2F
         if (floordown3 && Input.GetKeyDown(KeyCode.W))
         {
-           
-            transform.Translate(-4.47f, 9.46f, 0, Space.World);
-            bkcap.offset = new Vector2(-0.94f, -1.1f);
+            StartCoroutine(GameManager.instance.Endloadingimage());
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("2F");
         }
     }
 }
