@@ -11,9 +11,11 @@ public class GameManager : MonoBehaviour
     public GameObject gameView;
     public static GameManager instance; //對戰管理實體物件
     public static bool TP = false;
-    
-
-
+    public static bool canindoor1to3 = false;
+    public static bool canindoor2to2 = false;
+    public static bool canindoor2to3 = false;
+    public static bool canindoor3to1 = false;
+    public static bool canindoor3to2 = false;
     public void Awake()
     {
         instance = this;

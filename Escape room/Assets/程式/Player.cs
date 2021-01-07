@@ -163,10 +163,18 @@ public class Player : MonoBehaviour
         }
         else if (indoor1to3 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
         {
-            pos = transform.position;
-            StartCoroutine(GameManager.instance.Endloadingimage());
-            yield return new WaitForSeconds(1f);
-            SceneManager.LoadScene("房間1F-3");
+            if (GameManager.canindoor1to3 == false)
+            {
+                dialogue.instance.Dia.SetActive(true);
+                dialogue.instance.StartEffect();
+            }
+            else
+            {
+                pos = transform.position;
+                StartCoroutine(GameManager.instance.Endloadingimage());
+                yield return new WaitForSeconds(1f);
+                SceneManager.LoadScene("房間1F-3");
+            }     
         }
         else if (indoor2to1 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
         {
@@ -177,17 +185,33 @@ public class Player : MonoBehaviour
         }
         else if (indoor2to2 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
         {
-            pos = transform.position;
-            StartCoroutine(GameManager.instance.Endloadingimage());
-            yield return new WaitForSeconds(1f);
-            SceneManager.LoadScene("房間2F-2");
+            if (GameManager.canindoor2to2 == false)
+            {
+                dialogue.instance.Dia.SetActive(true);
+                dialogue.instance.StartEffect();
+            }
+            else
+            {
+                pos = transform.position;
+                StartCoroutine(GameManager.instance.Endloadingimage());
+                yield return new WaitForSeconds(1f);
+                SceneManager.LoadScene("房間2F-2");
+            }
         }
         else if (indoor2to3 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
         {
-            pos = transform.position;
-            StartCoroutine(GameManager.instance.Endloadingimage());
-            yield return new WaitForSeconds(1f);
-            SceneManager.LoadScene("房間2F-3");
+            if (GameManager.canindoor2to3 == false)
+            {
+                dialogue.instance.Dia.SetActive(true);
+                dialogue.instance.StartEffect();
+            }
+            else
+            {
+                pos = transform.position;
+                StartCoroutine(GameManager.instance.Endloadingimage());
+                yield return new WaitForSeconds(1f);
+                SceneManager.LoadScene("房間2F-3");
+            }
         }
         else if (indoor2to4 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
         {
@@ -198,18 +222,33 @@ public class Player : MonoBehaviour
         }
         else if (indoor3to1 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
         {
-            pos = transform.position;
-            StartCoroutine(GameManager.instance.Endloadingimage());
-            print("樓層" + pos);
-            yield return new WaitForSeconds(1f);
-            SceneManager.LoadScene("房間3F-1");
+            if (GameManager.canindoor3to1 == false)
+            {
+                dialogue.instance.Dia.SetActive(true);
+                dialogue.instance.StartEffect();
+            }
+            else
+            {
+                pos = transform.position;
+                StartCoroutine(GameManager.instance.Endloadingimage());
+                yield return new WaitForSeconds(1f);
+                SceneManager.LoadScene("房間3F-1");
+            }
         }
         else if (indoor3to2 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
         {
-            pos = transform.position;
-            StartCoroutine(GameManager.instance.Endloadingimage());
-            yield return new WaitForSeconds(1f);
-            SceneManager.LoadScene("房間3F-2");
+            if (GameManager.canindoor3to2 == false)
+            {
+                dialogue.instance.Dia.SetActive(true);
+                dialogue.instance.StartEffect();
+            }
+            else
+            {
+                pos = transform.position;
+                StartCoroutine(GameManager.instance.Endloadingimage());
+                yield return new WaitForSeconds(1f);
+                SceneManager.LoadScene("房間3F-2");
+            }
         }
         else if (indoor3to3 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
         {
