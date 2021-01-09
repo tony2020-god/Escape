@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     public bool floorup2;
     public bool floordown2;
     public bool floordown3;
+    public bool squatdown = false;
+
     public static Vector2 pos;
  
     public void Awake()
@@ -35,7 +37,7 @@ public class Player : MonoBehaviour
     {
         if (GameManager.TP == true)
         {
-            transform.Translate(pos.x, pos.y, 0, Space.World);
+            transform.position = new Vector3(pos.x, pos.y, 0);
             GameManager.TP = false;
         }
     }
@@ -49,23 +51,48 @@ public class Player : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        //水平浮點數 = 輸入 的 取得軸向("水平")-左右AD
-        float h = Input.GetAxis("Horizontal");
-        //剛體 的 加速度 = 新 二維向量(水平浮點數 * 速度, 剛體的加速度Y)
-        rig.velocity = new Vector2(h * speed, rig.velocity.y);
-        //動畫的設定布林值(參數名稱，水平 不等於零時勾選)
-        ani.SetBool("跑步開關", h != 0);
-        //keycode 列單(下拉式選單) 所有輸入的選項:滑鼠、鍵盤、搖桿
-        if (Input.GetKeyDown(KeyCode.D))
+   
+         
+        if (GameManager.instance.move == true && squatdown == false)
         {
-            //此物件的變形元件
-            //eulerAngles 歐拉角度
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            
+            //水平浮點數 = 輸入 的 取得軸向("水平")-左右AD
+            float h = Input.GetAxis("Horizontal");
+            //剛體 的 加速度 = 新 二維向量(水平浮點數 * 速度, 剛體的加速度Y)
+            rig.velocity = new Vector2(h * speed, rig.velocity.y);
+            //動畫的設定布林值(參數名稱，水平 不等於零時勾選)
+            ani.SetBool("跑步開關", h != 0);
+            //keycode 列單(下拉式選單) 所有輸入的選項:滑鼠、鍵盤、搖桿
+            if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A) == false && Input.GetKey(KeyCode.S) == false)
+            {
+                //此物件的變形元件
+                //eulerAngles 歐拉角度
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+
+            if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D) == false && Input.GetKey(KeyCode.S) == false)
+            {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+
+            }
+           
         }
-        if (Input.GetKeyDown(KeyCode.A))
+
+        if (Input.GetKey(KeyCode.S) && GameManager.instance.move == true)
         {
-            transform.eulerAngles = new Vector3(0, 180, 0);
+            squatdown = true;
+            rig.velocity = new Vector2(0, 0);
+            ani.SetBool("跑步開關", false);
+            ani.SetBool("蹲下開關", true);
         }
+        if (Input.GetKeyUp(KeyCode.S) && GameManager.instance.move == true)
+        {
+            squatdown = false;
+            ani.SetBool("蹲下開關", false);
+        }
+
+
+
 
     }
 
@@ -165,6 +192,9 @@ public class Player : MonoBehaviour
         {
             if (GameManager.canindoor1to3 == false)
             {
+                GameManager.instance.move = false;
+                rig.velocity = new Vector2(0, 0);
+                ani.SetBool("跑步開關", false);
                 dialogue.instance.Dia.SetActive(true);
                 dialogue.instance.StartEffect();
             }
@@ -187,6 +217,9 @@ public class Player : MonoBehaviour
         {
             if (GameManager.canindoor2to2 == false)
             {
+                GameManager.instance.move = false;
+                rig.velocity = new Vector2(0, 0);
+                ani.SetBool("跑步開關", false);
                 dialogue.instance.Dia.SetActive(true);
                 dialogue.instance.StartEffect();
             }
@@ -202,6 +235,9 @@ public class Player : MonoBehaviour
         {
             if (GameManager.canindoor2to3 == false)
             {
+                GameManager.instance.move = false;
+                rig.velocity = new Vector2(0, 0);
+                ani.SetBool("跑步開關", false);
                 dialogue.instance.Dia.SetActive(true);
                 dialogue.instance.StartEffect();
             }
@@ -224,6 +260,9 @@ public class Player : MonoBehaviour
         {
             if (GameManager.canindoor3to1 == false)
             {
+                GameManager.instance.move = false;
+                rig.velocity = new Vector2(0, 0);
+                ani.SetBool("跑步開關", false);
                 dialogue.instance.Dia.SetActive(true);
                 dialogue.instance.StartEffect();
             }
@@ -239,6 +278,9 @@ public class Player : MonoBehaviour
         {
             if (GameManager.canindoor3to2 == false)
             {
+                GameManager.instance.move = false;
+                rig.velocity = new Vector2(0, 0);
+                ani.SetBool("跑步開關", false);
                 dialogue.instance.Dia.SetActive(true);
                 dialogue.instance.StartEffect();
             }

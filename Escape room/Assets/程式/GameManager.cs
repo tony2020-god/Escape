@@ -16,12 +16,14 @@ public class GameManager : MonoBehaviour
     public static bool canindoor2to3 = false;
     public static bool canindoor3to1 = false;
     public static bool canindoor3to2 = false;
+    public bool move = true;
     public void Awake()
     {
         instance = this;
     }
     public void Start()
     {
+        move = true;
         StartCoroutine(Startloadingimage());
     }
     public IEnumerator Startloadingimage()

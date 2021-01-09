@@ -33,7 +33,7 @@ public class dialogue : MonoBehaviour
             if (strindex >= words.Length)//防止超出字串的長度
             {
                 strindex = 0;
-                
+                GameManager.instance.move = true;
                 Dia.SetActive(false);
             }
         }
