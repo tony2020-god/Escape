@@ -4,16 +4,14 @@ using UnityEngine.UI;
 using System.Collections;//引用系統集合、管理API(協同程式:非同步處理)
 
 public class MenuManager : MonoBehaviour
-{
-  
-    
+{   
     public GameObject background;
     public Animator ani;
     public GameObject runtext;
     public GameObject chicktext;
     public void StartGame()
     {
-        SceneManager.LoadScene("關卡1");
+        SceneManager.LoadScene("1F");
     }
     public IEnumerator ButtunChick()
     {

@@ -12,11 +12,24 @@ public class GameManager : MonoBehaviour
     public static GameManager instance; //對戰管理實體物件
     public static bool TP = false;
     public static bool canindoor1to3 = false;
+    public static bool canindoor2to1 = false;
     public static bool canindoor2to2 = false;
     public static bool canindoor2to3 = false;
     public static bool canindoor3to1 = false;
     public static bool canindoor3to2 = false;
+    public static bool canindoor3to3 = false;
     public bool move = true;
+
+    public static bool StartGame = false;
+    public static bool getusb = false;
+    public static bool getRaysLight = false;
+    public static bool bagopen = false;
+    public GameObject roomNumber;
+    public GameObject Key;
+    public GameObject usb;
+    public GameObject bag;
+    public GameObject RaysLight;
+    public GameObject usb2;
     public void Awake()
     {
         instance = this;
@@ -25,6 +38,33 @@ public class GameManager : MonoBehaviour
     {
         move = true;
         StartCoroutine(Startloadingimage());
+        if(canindoor2to1)
+        {
+            Key.SetActive(true);
+        }
+        if(getusb)
+        {
+            usb.SetActive(true);
+        }
+        if (getRaysLight)
+        {
+            RaysLight.SetActive(true);
+            usb2.SetActive(true);
+            roomNumber.SetActive(true);
+        }
+    }
+    public void bagcontrol()
+    {
+        if (bagopen)
+        {
+            bagopen = false;
+            bag.SetActive(false);
+        }
+        else
+        {
+            bagopen = true;
+            bag.SetActive(true);
+        }
     }
     public IEnumerator Startloadingimage()
     {
@@ -53,7 +93,6 @@ public class GameManager : MonoBehaviour
             loading.fillAmount = imageCD / 0.9f;                            //更新載入吧條
             yield return new WaitForSeconds(0.01f);
         }
-
     }
     public IEnumerator ExitRoom()
     {
@@ -65,5 +104,9 @@ public class GameManager : MonoBehaviour
     public void ExitButtom()
     {
         StartCoroutine(ExitRoom());
+    }
+    public void prompt()
+    {
+        dialogue.instance.Dia.SetActive(true);
     }
 }

@@ -15,5 +15,4 @@ public class FloorManager : MonoBehaviour
     {
         print("樓層為 :" + floor);
     }
-
 }

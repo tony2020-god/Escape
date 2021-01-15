@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     public bool floordown2;
     public bool floordown3;
     public bool squatdown = false;
-
+    public bool up = true;
     public static Vector2 pos;
  
     public void Awake()
@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     }
     public void Start()
     {
+        
         if (GameManager.TP == true)
         {
             transform.position = new Vector3(pos.x, pos.y, 0);
@@ -50,9 +51,7 @@ public class Player : MonoBehaviour
     /// 移動
     /// </summary>
     private void Move()
-    {
-   
-         
+    {        
         if (GameManager.instance.move == true && squatdown == false)
         {
             
@@ -74,8 +73,7 @@ public class Player : MonoBehaviour
             {
                 transform.eulerAngles = new Vector3(0, 180, 0);
 
-            }
-           
+            }          
         }
 
         if (Input.GetKey(KeyCode.S) && GameManager.instance.move == true)
@@ -90,10 +88,6 @@ public class Player : MonoBehaviour
             squatdown = false;
             ani.SetBool("蹲下開關", false);
         }
-
-
-
-
     }
 
     /// <summary>
@@ -174,23 +168,56 @@ public class Player : MonoBehaviour
     private IEnumerator INSIDE()
     {
        //進入房間
-        if (indoor1to1 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        if (indoor1to1 && Input.GetKeyDown(KeyCode.W) && up) //如果 在門裡面 並且按下w
         {
+            up = false;
+            GameManager.instance.move = false;
+            rig.velocity = new Vector2(0, 0);
+            ani.SetBool("跑步開關", false);
+            ani.SetBool("蹲下開關", false);
             pos = transform.position;
             StartCoroutine(GameManager.instance.Endloadingimage());
             yield return new WaitForSeconds(1f);
             SceneManager.LoadScene("房間1F-1");
         }
-        else if (indoor1to2 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        else if (indoor1to2 && Input.GetKeyDown(KeyCode.W) && up) //如果 在門裡面 並且按下w
         {
+            GameManager.instance.move = false;
+            up = false;
+            rig.velocity = new Vector2(0, 0);
+            ani.SetBool("跑步開關", false);
+            ani.SetBool("蹲下開關", false);
             pos = transform.position;
             StartCoroutine(GameManager.instance.Endloadingimage());
             yield return new WaitForSeconds(1f);
             SceneManager.LoadScene("房間1F-2");
         }
-        else if (indoor1to3 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        else if (indoor1to3 && Input.GetKeyDown(KeyCode.W) && up) //如果 在門裡面 並且按下w
         {
+            
             if (GameManager.canindoor1to3 == false)
+            {               
+                rig.velocity = new Vector2(0, 0);
+                ani.SetBool("跑步開關", false);
+                dialogue.instance.Dia.SetActive(true);
+                dialogue.instance.StartEffect();
+            }
+            else
+            {
+                up = false;
+                GameManager.instance.move = false;
+                rig.velocity = new Vector2(0, 0);
+                ani.SetBool("跑步開關", false);
+                ani.SetBool("蹲下開關", false);
+                pos = transform.position;
+                StartCoroutine(GameManager.instance.Endloadingimage());
+                yield return new WaitForSeconds(1f);
+                SceneManager.LoadScene("房間1F-3");
+            }     
+        }
+        else if (indoor2to1 && Input.GetKeyDown(KeyCode.W) && up) //如果 在門裡面 並且按下w
+        {
+            if (GameManager.canindoor2to1 == false)
             {
                 GameManager.instance.move = false;
                 rig.velocity = new Vector2(0, 0);
@@ -200,20 +227,19 @@ public class Player : MonoBehaviour
             }
             else
             {
+                up = false;
+                GameManager.instance.move = false;
+                rig.velocity = new Vector2(0, 0);
+                ani.SetBool("跑步開關", false);
+                ani.SetBool("蹲下開關", false);
+                pos = transform.position;
                 pos = transform.position;
                 StartCoroutine(GameManager.instance.Endloadingimage());
                 yield return new WaitForSeconds(1f);
-                SceneManager.LoadScene("房間1F-3");
-            }     
+                SceneManager.LoadScene("房間2F-1");
+            }
         }
-        else if (indoor2to1 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
-        {
-            pos = transform.position;
-            StartCoroutine(GameManager.instance.Endloadingimage());
-            yield return new WaitForSeconds(1f);
-            SceneManager.LoadScene("房間2F-1");
-        }
-        else if (indoor2to2 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        else if (indoor2to2 && Input.GetKeyDown(KeyCode.W) && up) //如果 在門裡面 並且按下w
         {
             if (GameManager.canindoor2to2 == false)
             {
@@ -225,14 +251,21 @@ public class Player : MonoBehaviour
             }
             else
             {
+                up = false;
+                GameManager.instance.move = false;
+                rig.velocity = new Vector2(0, 0);
+                ani.SetBool("跑步開關", false);
+                ani.SetBool("蹲下開關", false);
+                pos = transform.position;
                 pos = transform.position;
                 StartCoroutine(GameManager.instance.Endloadingimage());
                 yield return new WaitForSeconds(1f);
                 SceneManager.LoadScene("房間2F-2");
             }
         }
-        else if (indoor2to3 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        else if (indoor2to3 && Input.GetKeyDown(KeyCode.W) && up) //如果 在門裡面 並且按下w
         {
+            GameManager.instance.move = false;
             if (GameManager.canindoor2to3 == false)
             {
                 GameManager.instance.move = false;
@@ -243,20 +276,31 @@ public class Player : MonoBehaviour
             }
             else
             {
+                up = false;
+                GameManager.instance.move = false;
+                rig.velocity = new Vector2(0, 0);
+                ani.SetBool("跑步開關", false);
+                ani.SetBool("蹲下開關", false);
+                pos = transform.position;
                 pos = transform.position;
                 StartCoroutine(GameManager.instance.Endloadingimage());
                 yield return new WaitForSeconds(1f);
                 SceneManager.LoadScene("房間2F-3");
             }
         }
-        else if (indoor2to4 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        else if (indoor2to4 && Input.GetKeyDown(KeyCode.W) && up) //如果 在門裡面 並且按下w
         {
+            up = false;
+            GameManager.instance.move = false;
+            rig.velocity = new Vector2(0, 0);
+            ani.SetBool("跑步開關", false);
+            ani.SetBool("蹲下開關", false);
             pos = transform.position;
             StartCoroutine(GameManager.instance.Endloadingimage());
             yield return new WaitForSeconds(1f);
             SceneManager.LoadScene("房間2F-4");
         }
-        else if (indoor3to1 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        else if (indoor3to1 && Input.GetKeyDown(KeyCode.W) && up) //如果 在門裡面 並且按下w
         {
             if (GameManager.canindoor3to1 == false)
             {
@@ -268,14 +312,20 @@ public class Player : MonoBehaviour
             }
             else
             {
+                up = false;
+                GameManager.instance.move = false;
+                rig.velocity = new Vector2(0, 0);
+                ani.SetBool("跑步開關", false);
+                ani.SetBool("蹲下開關", false);
                 pos = transform.position;
                 StartCoroutine(GameManager.instance.Endloadingimage());
                 yield return new WaitForSeconds(1f);
                 SceneManager.LoadScene("房間3F-1");
             }
         }
-        else if (indoor3to2 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        else if (indoor3to2 && Input.GetKeyDown(KeyCode.W) && up) //如果 在門裡面 並且按下w
         {
+           
             if (GameManager.canindoor3to2 == false)
             {
                 GameManager.instance.move = false;
@@ -286,46 +336,87 @@ public class Player : MonoBehaviour
             }
             else
             {
+                up = false;
+                GameManager.instance.move = false;
+                rig.velocity = new Vector2(0, 0);
+                ani.SetBool("跑步開關", false);
+                ani.SetBool("蹲下開關", false);
                 pos = transform.position;
                 StartCoroutine(GameManager.instance.Endloadingimage());
                 yield return new WaitForSeconds(1f);
                 SceneManager.LoadScene("房間3F-2");
             }
         }
-        else if (indoor3to3 && Input.GetKeyDown(KeyCode.W)) //如果 在門裡面 並且按下w
+        else if (indoor3to3 && Input.GetKeyDown(KeyCode.W) && up) //如果 在門裡面 並且按下w
         {
-            pos = transform.position;
-            StartCoroutine(GameManager.instance.Endloadingimage());
-            yield return new WaitForSeconds(1f);
-            SceneManager.LoadScene("房間3F-3");
+            if (GameManager.canindoor3to3 == false)
+            {
+                GameManager.instance.move = false;
+                rig.velocity = new Vector2(0, 0);
+                ani.SetBool("跑步開關", false);
+                dialogue.instance.Dia.SetActive(true);
+                dialogue.instance.StartEffect();
+            }
+            else
+            {
+                up = false;
+                GameManager.instance.move = false;
+                rig.velocity = new Vector2(0, 0);
+                ani.SetBool("跑步開關", false);
+                ani.SetBool("蹲下開關", false);
+                pos = transform.position;
+                StartCoroutine(GameManager.instance.Endloadingimage());
+                yield return new WaitForSeconds(1f);
+                SceneManager.LoadScene("房間3F-3");
+            }
         }
        //1F上2F
-        if (floorup1 && Input.GetKeyDown(KeyCode.W))
+        if (floorup1 && Input.GetKeyDown(KeyCode.W) && up)
         {
+            up = false;
+            GameManager.instance.move = false;
+            rig.velocity = new Vector2(0, 0);
+            ani.SetBool("跑步開關", false);
+            ani.SetBool("蹲下開關", false);
             FloorManager.floor = FloorManager.floor + 1;
             StartCoroutine(GameManager.instance.Endloadingimage());
             yield return new WaitForSeconds(1f);
             SceneManager.LoadScene("2F");
         }
        //2F上3F
-        if (floorup2 && Input.GetKeyDown(KeyCode.W))
+        if (floorup2 && Input.GetKeyDown(KeyCode.W) && up)
         {
+            up = false;
+            GameManager.instance.move = false;
+            rig.velocity = new Vector2(0, 0);
+            ani.SetBool("跑步開關", false);
+            ani.SetBool("蹲下開關", false);
             FloorManager.floor = FloorManager.floor + 1;
             StartCoroutine(GameManager.instance.Endloadingimage());
             yield return new WaitForSeconds(1f);
             SceneManager.LoadScene("3F");
         }
         //2F下1F
-        if (floordown2 && Input.GetKeyDown(KeyCode.W))
+        if (floordown2 && Input.GetKeyDown(KeyCode.W) && up)
         {
+            up = false;
+            GameManager.instance.move = false;
+            rig.velocity = new Vector2(0, 0);
+            ani.SetBool("跑步開關", false);
+            ani.SetBool("蹲下開關", false);
             FloorManager.floor = FloorManager.floor - 1;
             StartCoroutine(GameManager.instance.Endloadingimage());
             yield return new WaitForSeconds(1f);
             SceneManager.LoadScene("1F");
         }
        //3F下2F
-        if (floordown3 && Input.GetKeyDown(KeyCode.W))
+        if (floordown3 && Input.GetKeyDown(KeyCode.W) && up)
         {
+            up = false;
+            GameManager.instance.move = false;
+            rig.velocity = new Vector2(0, 0);
+            ani.SetBool("跑步開關", false);
+            ani.SetBool("蹲下開關", false);
             FloorManager.floor = FloorManager.floor - 1;
             StartCoroutine(GameManager.instance.Endloadingimage());
             yield return new WaitForSeconds(1f);
