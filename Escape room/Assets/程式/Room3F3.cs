@@ -27,6 +27,10 @@ public class Room3F3 : MonoBehaviour
     public void cameraDoor()
     {
         door.SetActive(true);
+        string[] wordsText = { "門是上鎖的，上面還有字...是甚麼忠告嗎" };
+        dialogue.instance.words = wordsText;
+        dialogue.instance.Dia.SetActive(true);
+        dialogue.instance.Startdia();
     }
     public void retuenRoom()
     {
@@ -45,7 +49,7 @@ public class Room3F3 : MonoBehaviour
             string[] wordsText = { "取得紫外線燈和USB" };
             dialogue.instance.words = wordsText;
             dialogue.instance.Dia.SetActive(true);
-            dialogue.instance.StartEffect();
+            dialogue.instance.Startdia();
             GameManager.getRaysLight = true;
             GameManager.instance.roomNumber.SetActive(true);
             GameManager.instance.RaysLight.SetActive(true);

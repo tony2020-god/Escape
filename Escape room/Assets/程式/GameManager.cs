@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public GameObject bag;
     public GameObject RaysLight;
     public GameObject usb2;
+    public GameObject keyboard;
     public void Awake()
     {
         instance = this;
@@ -51,6 +52,10 @@ public class GameManager : MonoBehaviour
             RaysLight.SetActive(true);
             usb2.SetActive(true);
             roomNumber.SetActive(true);
+        }
+        if (canindoor1to3)
+        {
+            keyboard.SetActive(true);
         }
     }
     public void bagcontrol()

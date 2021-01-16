@@ -15,7 +15,7 @@ public class CameraControl : MonoBehaviour
         Vector3 posB = target.position;       //取得目標座標
         posB.z = -10;                         //固定z軸
         posB.y = Mathf.Clamp(posB.y, limit.x, limit.y); //將y軸夾在限制範圍內
-        posB.x = Mathf.Clamp(posB.x, 0, 160); //將x軸夾在限制範圍內
+        posB.x = Mathf.Clamp(posB.x, 0, 107.5f); //將x軸夾在限制範圍內
         //一禎的時間 Time.deltaTime
         posA = Vector3.Lerp(posA, posB, speed * Time.deltaTime);//插值
 

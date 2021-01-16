@@ -13,7 +13,7 @@ public class Room2F3 : MonoBehaviour
     public void camerapaper()
     {
         paper.SetActive(true);
-        string[] wordsText = { "好像是人體實驗的報告，照著這個步驟走似乎能發現甚麼..." };
+        string[] wordsText = { "好像是人體實驗的報告，照著這個動作做似乎能發現甚麼..." };
         dialogue.instance.words = wordsText;
         dialogue.instance.Dia.SetActive(true);
         dialogue.instance.StartEffect();

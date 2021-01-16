@@ -35,11 +35,11 @@ public class Room1F1 : MonoBehaviour
         if (number == "845136729")
         {
             opencoffer();
-            string[] wordsText = { "取得2F-1的鑰匙" };
+            string[] wordsText = { "取得2F某層的的鑰匙" };
             dialogue.instance.words = wordsText;
             dialogue.instance.Dia.SetActive(true);
 
-            dialogue.instance.StartEffect();
+            dialogue.instance.Startdia();
             GameManager.canindoor2to1 = true;
             GameManager.instance.Key.SetActive(true);
         }

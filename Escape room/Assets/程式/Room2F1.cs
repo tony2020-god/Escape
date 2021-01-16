@@ -119,7 +119,7 @@ public class Room2F1 : MonoBehaviour
     public void USBPassword(string getInput)
     {
         string number = getInput;
-        if (number == "6998")
+        if (number == "9869")
         {
             USBpasspassword = true;
         }
@@ -146,7 +146,7 @@ public class Room2F1 : MonoBehaviour
         {
             GameManager.canindoor1to3 = true;
             USB2passscreen.SetActive(true);
-            string[] wordsText = { "順便把鍵盤拿走好了，感覺用的到" };
+            string[] wordsText = { "這個鍵盤看起來很好用，拿走好了" };
             dialogue.instance.words = wordsText;
             dialogue.instance.Dia.SetActive(true);
             dialogue.instance.StartEffect();

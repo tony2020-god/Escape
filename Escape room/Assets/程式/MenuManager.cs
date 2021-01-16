@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
     public Animator ani;
     public GameObject runtext;
     public GameObject chicktext;
+    public GameObject story;
     public void StartGame()
     {
         SceneManager.LoadScene("1F");
@@ -20,10 +21,15 @@ public class MenuManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         Destroy(runtext);
         Destroy(chicktext);
-        Invoke("StartGame", 3f);
+        Invoke("startstory", 3f);
     }
     public void buttonclick()
     {
         StartCoroutine(ButtunChick());
+    }
+    public void startstory()
+    {
+        story.SetActive(true);
+        Invoke("StartGame", 20f);
     }
 }

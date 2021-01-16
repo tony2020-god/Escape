@@ -142,6 +142,13 @@ public class dialogue : MonoBehaviour
     {
         isActive = true;
     }
+    public void Startdia()
+    {
+        timer = 0;
+        currentPos = 0;
+        strindex = 0; 
+        isActive = true;
+    }
     /// 打字
     public  void OnStartWriter()
     {

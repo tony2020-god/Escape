@@ -557,6 +557,36 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5672969062313966413, guid: 8950d27eda9ccb94496eafdbca49081e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672969062313966413, guid: 8950d27eda9ccb94496eafdbca49081e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672969062313966413, guid: 8950d27eda9ccb94496eafdbca49081e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672969062313966413, guid: 8950d27eda9ccb94496eafdbca49081e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 663739679}
+    - target: {fileID: 5672969062313966413, guid: 8950d27eda9ccb94496eafdbca49081e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Keyboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672969062313966413, guid: 8950d27eda9ccb94496eafdbca49081e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7189082582510424798, guid: 8950d27eda9ccb94496eafdbca49081e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -622,6 +652,12 @@ GameObject:
 --- !u!1 &341900480 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4535858620729108043, guid: 8950d27eda9ccb94496eafdbca49081e,
+    type: 3}
+  m_PrefabInstance: {fileID: 341900474}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &341900481 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 547009640993662133, guid: 8950d27eda9ccb94496eafdbca49081e,
     type: 3}
   m_PrefabInstance: {fileID: 341900474}
   m_PrefabAsset: {fileID: 0}
@@ -1012,6 +1048,7 @@ MonoBehaviour:
   bag: {fileID: 341900478}
   RaysLight: {fileID: 341900480}
   usb2: {fileID: 341900479}
+  keyboard: {fileID: 341900481}
 --- !u!4 &663739676
 Transform:
   m_ObjectHideFlags: 0
@@ -1078,6 +1115,7 @@ MonoBehaviour:
   usb: {fileID: 693953678}
   raysLight: {fileID: 693953684}
   usb2: {fileID: 693953683}
+  keyboard: {fileID: 693953685}
   currentPos: 0
   islongWriting: 0
 --- !u!1001 &693953677
@@ -1244,6 +1282,12 @@ GameObject:
 --- !u!1 &693953684 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1403297146373544411, guid: a9737a86e1a5dbc429e806e5ed2a88a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 693953677}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &693953685 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6188506120694251654, guid: a9737a86e1a5dbc429e806e5ed2a88a6,
     type: 3}
   m_PrefabInstance: {fileID: 693953677}
   m_PrefabAsset: {fileID: 0}

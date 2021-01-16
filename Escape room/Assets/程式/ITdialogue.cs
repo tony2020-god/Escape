@@ -15,6 +15,7 @@ public class ITdialogue : MonoBehaviour
     public GameObject usb;
     public GameObject raysLight;
     public GameObject usb2;
+    public GameObject keyboard;
     public int currentPos = 0; //當前打字位置
     public bool islongWriting = false;
 
@@ -31,7 +32,7 @@ public class ITdialogue : MonoBehaviour
     }
     public void KEY()
     {
-        string[] wordsText = { "這是通往2F-1的鑰匙" };
+        string[] wordsText = { "這是通往2F房間的鑰匙" };
         words = wordsText;
         key.SetActive(true);
         Dia.SetActive(true);
@@ -58,6 +59,14 @@ public class ITdialogue : MonoBehaviour
         string[] wordsText = { "USB估計裡面有甚麼資料" };
         words = wordsText;
         usb2.SetActive(true);
+        Dia.SetActive(true);
+        StartEffect();
+    }
+    public void Keyboard()
+    {
+        string[] wordsText = { "很高級的鍵盤" };
+        words = wordsText;
+        keyboard.SetActive(true);
         Dia.SetActive(true);
         StartEffect();
     }

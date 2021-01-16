@@ -38,7 +38,7 @@ public class Room2F2 : MonoBehaviour
             string[] wordsText = { "取得一個隨身碟，上面還有數字，似乎是密碼" };
             dialogue.instance.words = wordsText;
             dialogue.instance.Dia.SetActive(true);
-            dialogue.instance.StartEffect();
+            dialogue.instance.Startdia();
             GameManager.getusb = true;
         }
     }
