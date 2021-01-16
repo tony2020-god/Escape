@@ -17,11 +17,6 @@ ScriptsOnlyBuild:
     - dialogue
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -1500,4 +1495,4 @@ ScriptsOnlyBuild:
   - "Assets/\u623F\u95933F-1.unity"
   - "Assets/\u623F\u95933F-2.unity"
   - "Assets/\u623F\u95933F-3.unity"
-  playerPath: C:/Users/tonys/OneDrive/Desktop/Unity works/2D_EscapeRoom/Escape/WEB
+  playerPath: C:/Users/tonys/OneDrive/Desktop/Unity works/2D_EscapeRoom/Escape/Play
