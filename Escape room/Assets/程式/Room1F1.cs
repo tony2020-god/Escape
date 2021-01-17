@@ -38,7 +38,7 @@ public class Room1F1 : MonoBehaviour
     {
         string number = getInput;
         if (number == "845136729")
-        {
+        {              
             opencoffer();
             string[] wordsText = { "取得2F某層的的鑰匙" };
             dialogue.instance.words = wordsText;

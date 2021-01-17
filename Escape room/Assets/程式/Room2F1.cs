@@ -43,7 +43,7 @@ public class Room2F1 : MonoBehaviour
         PC.SetActive(true);
         if (GameManager.getRaysLight)
         {
-            string[] wordsText = { "密碼?其他房間應該有線索..." };
+            string[] wordsText = { "其他房間應該有線索..." };
             dialogue.instance.words = wordsText;
             dialogue.instance.Dia.SetActive(true);
             dialogue.instance.StartEffect();

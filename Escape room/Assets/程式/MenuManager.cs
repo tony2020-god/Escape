@@ -10,22 +10,31 @@ public class MenuManager : MonoBehaviour
     public GameObject runtext;
     public GameObject chicktext;
     public GameObject story;
+    public bool Startbutton = false;
+    public AudioClip glass;
+    public AudioSource aud;
+    
     public void StartGame()
     {
         SceneManager.LoadScene("1F");
     }
     public IEnumerator ButtunChick()
     {
-        print("123");
+        Startbutton = true;
+        aud.PlayOneShot(glass);
         ani.SetBool("點擊開始遊戲", true);
         yield return new WaitForSeconds(0.5f);
         Destroy(runtext);
         Destroy(chicktext);
-        Invoke("startstory", 3f);
+        Invoke("startstory", 1f);
     }
     public void buttonclick()
     {
-        StartCoroutine(ButtunChick());
+        if (Startbutton==false)
+        {
+            StartCoroutine(ButtunChick());
+        }
+
     }
     public void startstory()
     {

@@ -1025,7 +1025,7 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
-      Hash: f8ce4c1e979e88ca268e03eaa78030e6
+      Hash: 8f52922afde285e0d13270e6b158a416
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MenuManager
@@ -1495,4 +1495,4 @@ ScriptsOnlyBuild:
   - "Assets/\u623F\u95933F-1.unity"
   - "Assets/\u623F\u95933F-2.unity"
   - "Assets/\u623F\u95933F-3.unity"
-  playerPath: C:/Users/tonys/OneDrive/Desktop/Unity works/2D_EscapeRoom/Escape/WEB
+  playerPath: C:/Users/tonys/OneDrive/Desktop/Unity works/2D_EscapeRoom/Escape/Play

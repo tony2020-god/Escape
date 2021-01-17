@@ -130,7 +130,6 @@ public class dialogue : MonoBehaviour
                     strindex = 0;
                     GameManager.instance.move = true;
                     GameManager.StartGame = true;
-                    judgeRoom();
                     Dia.SetActive(false);
                 }
             }

@@ -200,6 +200,8 @@ public class Player : MonoBehaviour
                 GameManager.instance.move = false;
                 rig.velocity = new Vector2(0, 0);
                 ani.SetBool("跑步開關", false);
+                string[] wordsText = { "房間被上鎖了" };
+                dialogue.instance.words = wordsText;
                 dialogue.instance.Dia.SetActive(true);
                 dialogue.instance.Startdia();
             }
