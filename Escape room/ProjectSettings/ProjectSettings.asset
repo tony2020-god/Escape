@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 20
-  productGUID: 6da62d79c5428a446827636700b55360
+  productGUID: a88de443d55e72f4495bffe1cb8cf48f
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Tonystark1006
+  companyName: TONY
   productName: Escape room
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
