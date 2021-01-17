@@ -22,12 +22,17 @@ public class Room2F2 : MonoBehaviour
     public void cameracoffer()
     {
         coffer.SetActive(true);
+        GameManager.instance.roomNumber.SetActive(false);
     }
     public void retuenRoom()
     {
         coffer.SetActive(false);
         string[] wordsText = { "又有一個保險箱...", "地上有不同顏色的油漆還有一個箭頭", "好像是要遵循這個方向..." };
         dialogue.instance.words = wordsText;
+        if (GameManager.getRaysLight)
+        {
+            GameManager.instance.roomNumber.SetActive(true);
+        }
     }
     public void GetInput(string getInput)
     {

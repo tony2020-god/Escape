@@ -54,6 +54,7 @@ public class Room3F2 : MonoBehaviour
         dialogue.instance.words = wordsText;
         dialogue.instance.Dia.SetActive(true);
         dialogue.instance.StartEffect();
+        GameManager.instance.roomNumber.SetActive(false);
     }
     
     public void retuenRoom()
@@ -62,6 +63,10 @@ public class Room3F2 : MonoBehaviour
         aud.Play();
         string[] wordsText = { "好像是音樂教室" };
         dialogue.instance.words = wordsText;
+        if (GameManager.getRaysLight)
+        {
+            GameManager.instance.roomNumber.SetActive(true);
+        }
     }
 
 

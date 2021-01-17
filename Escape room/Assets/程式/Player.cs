@@ -196,11 +196,12 @@ public class Player : MonoBehaviour
         {
             
             if (GameManager.canindoor1to3 == false)
-            {               
+            {
+                GameManager.instance.move = false;
                 rig.velocity = new Vector2(0, 0);
                 ani.SetBool("跑步開關", false);
                 dialogue.instance.Dia.SetActive(true);
-                dialogue.instance.StartEffect();
+                dialogue.instance.Startdia();
             }
             else
             {
@@ -223,7 +224,7 @@ public class Player : MonoBehaviour
                 rig.velocity = new Vector2(0, 0);
                 ani.SetBool("跑步開關", false);
                 dialogue.instance.Dia.SetActive(true);
-                dialogue.instance.StartEffect();
+                dialogue.instance.Startdia();
             }
             else
             {
@@ -247,7 +248,7 @@ public class Player : MonoBehaviour
                 rig.velocity = new Vector2(0, 0);
                 ani.SetBool("跑步開關", false);
                 dialogue.instance.Dia.SetActive(true);
-                dialogue.instance.StartEffect();
+                dialogue.instance.Startdia();
             }
             else
             {
@@ -272,7 +273,7 @@ public class Player : MonoBehaviour
                 rig.velocity = new Vector2(0, 0);
                 ani.SetBool("跑步開關", false);
                 dialogue.instance.Dia.SetActive(true);
-                dialogue.instance.StartEffect();
+                dialogue.instance.Startdia();
             }
             else
             {
@@ -308,7 +309,7 @@ public class Player : MonoBehaviour
                 rig.velocity = new Vector2(0, 0);
                 ani.SetBool("跑步開關", false);
                 dialogue.instance.Dia.SetActive(true);
-                dialogue.instance.StartEffect();
+                dialogue.instance.Startdia();
             }
             else
             {
@@ -332,7 +333,7 @@ public class Player : MonoBehaviour
                 rig.velocity = new Vector2(0, 0);
                 ani.SetBool("跑步開關", false);
                 dialogue.instance.Dia.SetActive(true);
-                dialogue.instance.StartEffect();
+                dialogue.instance.Startdia();
             }
             else
             {
@@ -355,7 +356,7 @@ public class Player : MonoBehaviour
                 rig.velocity = new Vector2(0, 0);
                 ani.SetBool("跑步開關", false);
                 dialogue.instance.Dia.SetActive(true);
-                dialogue.instance.StartEffect();
+                dialogue.instance.Startdia();
             }
             else
             {

@@ -80,7 +80,7 @@ public class Room1F3 : MonoBehaviour
             string[] wordsText = { "大門打開了!" };
             dialogue.instance.words = wordsText;
             dialogue.instance.Dia.SetActive(true);
-            dialogue.instance.StartEffect();
+            dialogue.instance.Startdia();
 
 
         }

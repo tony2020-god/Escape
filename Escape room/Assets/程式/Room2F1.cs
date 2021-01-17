@@ -65,13 +65,19 @@ public class Room2F1 : MonoBehaviour
                 dialogue.instance.StartEffect();
             }
         }
-       
-        
+
+        GameManager.instance.roomNumber.SetActive(false);
     }
 
     public void retuenRoom()
     {
         PC.SetActive(false);
+        string[] wordsText = { "黑板上有些奇怪的數字，好像是簽名" };
+        dialogue.instance.words = wordsText;
+        if (GameManager.getRaysLight)
+        {
+            GameManager.instance.roomNumber.SetActive(true);
+        }
     }
     public void Getaccount(string getInput)
     {

@@ -17,12 +17,17 @@ public class Room2F3 : MonoBehaviour
         dialogue.instance.words = wordsText;
         dialogue.instance.Dia.SetActive(true);
         dialogue.instance.StartEffect();
+        GameManager.instance.roomNumber.SetActive(false);
     }
     public void retuenRoom()
     {
         paper.SetActive(false);
         string[] wordsText = { "好凌亂的房間，似乎是病房" };
         dialogue.instance.words = wordsText;
+        if (GameManager.getRaysLight)
+        {
+            GameManager.instance.roomNumber.SetActive(true);
+        }
     }
     
     

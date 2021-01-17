@@ -32,11 +32,12 @@ public class dialogue : MonoBehaviour
         {
             string[] wordstart = { "這裡是哪裡?", "我記得我昨天是躺在床上才對", "得先從這裡逃出去才行" };
             string[] wordsText = { "房間被上鎖了" };
+            print(name);
             if(GameManager.StartGame == false)
             {
                 words = wordstart;
                 Dia.SetActive(true);
-                StartEffect();
+                Startdia();
                 GameManager.instance.move = false;
             }
             else
@@ -129,13 +130,11 @@ public class dialogue : MonoBehaviour
                     strindex = 0;
                     GameManager.instance.move = true;
                     GameManager.StartGame = true;
+                    judgeRoom();
                     Dia.SetActive(false);
                 }
             }
-        if (name == "1F" || name == "2F" || name == "3F")
-        {
-            judgeRoom();
-        }
+       
     }
 
     public void StartEffect()

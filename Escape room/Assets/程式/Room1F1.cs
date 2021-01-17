@@ -22,12 +22,17 @@ public class Room1F1 : MonoBehaviour
     public void cameracoffer()
     {
         coffer.SetActive(true);
+        GameManager.instance.roomNumber.SetActive(false);
     }
     public void retuenRoom()
     {
         coffer.SetActive(false);
         string[] wordsText = { "這裡有一個保險箱，密碼似乎是9碼..." };
         dialogue.instance.words = wordsText;
+        if(GameManager.getRaysLight)
+        {
+            GameManager.instance.roomNumber.SetActive(true);
+        }
     }
     public void GetInput(string getInput)
     {
