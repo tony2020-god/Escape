@@ -89,6 +89,7 @@ public class ITdialogue : MonoBehaviour
                 usb.SetActive(false);
                 usb2.SetActive(false);
                 raysLight.SetActive(false);
+                keyboard.SetActive(false);
             }
         }
      
