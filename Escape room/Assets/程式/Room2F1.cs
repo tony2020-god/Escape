@@ -151,6 +151,7 @@ public class Room2F1 : MonoBehaviour
         if (USB2passpassword)
         {
             GameManager.canindoor1to3 = true;
+            GameManager.instance.keyboard.SetActive(true);
             USB2passscreen.SetActive(true);
             string[] wordsText = { "這個鍵盤看起來很好用，拿走好了" };
             dialogue.instance.words = wordsText;

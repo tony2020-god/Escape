@@ -45,6 +45,7 @@ public class Room2F2 : MonoBehaviour
             dialogue.instance.Dia.SetActive(true);
             dialogue.instance.Startdia();
             GameManager.getusb = true;
+            GameManager.instance.usb.SetActive(true);
         }
     }
 }
